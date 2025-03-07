@@ -130,6 +130,25 @@ Starting and stopping container
 ```bash
 docker stop postgres-container
 ```
+---
+## Setting Up Initial migration
+
+**Run first migration**
+```bash
+dotnet ef migrations add InitialCreate
+```
+***Make sure that database is on***
+```bash
+dotnet ef database update
+```
+---
+## Populate Data
+
+```bash 
+psql -h localhost -U akmalchik -d workshopdb -f populate.sql
+```
+You will be asked to enter password "ieeecs@usf|is|amazing"
+
 
 ---
 ## Suggestions & Next Steps

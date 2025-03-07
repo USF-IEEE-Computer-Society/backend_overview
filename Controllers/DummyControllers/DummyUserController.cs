@@ -20,7 +20,7 @@ namespace Workshop_Basics.Controllers.DummyControllers
         {
             var user = _dummyDatabase.GetUser(credentials.nickname, credentials.password);
             if (user == null)
-                return NotFound();
+                return StatusCode(500, "Account was created please login");
 
             return Ok(user);
         }
@@ -29,14 +29,17 @@ namespace Workshop_Basics.Controllers.DummyControllers
         public ActionResult<DummyUser> Signup([FromBody] DummyUser user)
         {
             var newUser = _dummyDatabase.CreateUser(user.FirstName, user.Username, user.Password);
-            return CreatedAtAction(nameof(GetUser), new { id = newUser.UserId }, newUser);
+            var checkUser = _dummyDatabase.GetUser(user.Username, user.Password);
+            if (checkUser == null)
+                return StatusCode(500, "Could not save the user");
+            return Ok(newUser);
         }
         
         
-        [HttpPut("{id}")]
-        public ActionResult<DummyUser> UpdateMyAccount(int id, [FromBody] DummyUser user)
+        [HttpPut("edit-user")]
+        public ActionResult<DummyUser> UpdateMyAccount([FromBody] DummyUser user)
         {
-            var updatedUser = _dummyDatabase.UpdateUser(id, user.FirstName, user.Username, user.Password);
+            var updatedUser = _dummyDatabase.UpdateUser(user.UserId, user.FirstName, user.Username, user.Password);
             if (updatedUser == null)
                 return NotFound("User not found.");
             return Ok(updatedUser);

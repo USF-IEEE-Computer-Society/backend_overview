@@ -11,8 +11,8 @@ using Workshop_Basics.Database;
 namespace Workshop_Basics.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250307002229_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250307141927_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

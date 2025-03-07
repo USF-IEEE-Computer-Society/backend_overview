@@ -18,7 +18,7 @@ public class Program
         // Add services to the container.
         builder.Services.AddControllers().AddJsonOptions(options =>
         {
-            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
         });
         
         builder.Services.AddEndpointsApiExplorer();
