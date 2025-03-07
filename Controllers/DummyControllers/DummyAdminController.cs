@@ -11,9 +11,9 @@ namespace Workshop_Basics.Controllers.DummyControllers
     {
         private readonly UserDummyDatabase _dummyDatabase;
 
-        public DummyAdminController()
+        public DummyAdminController(UserDummyDatabase dummyDatabase)
         {
-            _dummyDatabase = new UserDummyDatabase();
+            _dummyDatabase = dummyDatabase;
         }
         
         [HttpGet("users")]

@@ -9,10 +9,9 @@ namespace Workshop_Basics.Controllers.DummyControllers
     public class DummyUserController : ControllerBase
     {
         private readonly UserDummyDatabase _dummyDatabase;
-
-        public DummyUserController()
+        public DummyUserController(UserDummyDatabase dummyDatabase)
         {
-            _dummyDatabase = new UserDummyDatabase();
+            _dummyDatabase = dummyDatabase;
         }
 
         [HttpPost("login")]
@@ -26,7 +25,7 @@ namespace Workshop_Basics.Controllers.DummyControllers
         }
         
         [HttpPost("signup")]
-        public ActionResult<DummyUser> Signup([FromBody] DummyUser user)
+        public ActionResult<DummyUser> Signup([FromBody] DummyUserSignup user)
         {
             var newUser = _dummyDatabase.CreateUser(user.FirstName, user.Username, user.Password);
             var checkUser = _dummyDatabase.GetUser(user.Username, user.Password);

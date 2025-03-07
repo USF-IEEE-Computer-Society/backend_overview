@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Workshop_Basics.Models;
 
 namespace Workshop_Basics.Controllers.DummyControllers
 {
@@ -17,6 +18,20 @@ namespace Workshop_Basics.Controllers.DummyControllers
         {
             return "I always tell the truth. Even when I lie";
         }
+        
+        [HttpPut("using-query-string/{param}")]
+        public string QueryString(string param)
+        {
+            return "Lets see if works, " + param;
+        }
+        
+        [HttpPut("using-http-body")] 
+        public string QueryString([FromBody] Credentials credential)
+        {
+            return $"Your nickname: {credential.nickname}, Your password: {credential.password}";
+        }
+        
+        
         
         
     }

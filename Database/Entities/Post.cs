@@ -6,11 +6,9 @@ public class Post
 {
    
     public int PostId { get; set; }
-    public string? Header { get; set; } //? what does it even mean
+    public string? Header { get; set; }
     public string Content { get; set; }
     public int UserId { get; set; }
-    
-    [JsonIgnore]
-    public User User { get; set; }
-    
+    [JsonIgnore] public User User { get; set; }
 }
+

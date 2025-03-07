@@ -8,3 +8,12 @@ public class DummyUser
     public int UserId { get; set; }
     
 }
+
+
+public class DummyUserSignup
+{
+    public string FirstName { get; set; }
+    public string Password { get; set; }
+    public string Username { get; set; }
+    
+}
